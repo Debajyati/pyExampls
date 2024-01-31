@@ -46,3 +46,18 @@ dataframe['Double_Duration'] = np.multiply(dataframe['Duration'], 2)
 print("New Dataframe:\n")
 # Display the DataFrame with the new column
 print(dataframe)
+
+# Merging DataFrames based on a common column
+df1 = pd.DataFrame({"ID":[616,2,1],"Name":['Goblin','Nightmare','Sabretooth']})
+df2 = pd.DataFrame({"ID":[1,2,3], "Opponent":['Talia-Al-Ghul','Scarecrow','Two-face']})
+
+new_df = pd.merge(df1, df2, on='ID')
+print('\n merged DataFrame -\n', new_df, '\n')
+
+# Element wise addition on a Dataframe with numpy array
+new_array = np.array([5000,8620,4560])
+df2.rename(columns = {'Opponent':'Player'}, inplace = True)
+df2['Attack Power'] = [45000, 70000, 55000]
+df2['Updated Power'] = np.add(df2['Attack Power'], new_array)
+
+print('\n', df2, '\n')
